@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>Product Landing Page</title>
+  <style>
+    body {
+      background-color: #fbfbfb;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    @media (min-width: 991.98px) {
+      main {
+        padding-left: 240px;
+      }
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 58px 0 0;
+      /* Height of navbar */
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+      width: 240px;
+      z-index: 600;
+    }
+
+    @media (max-width: 1018.98px) {
+      .sidebar {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (min-width: 991.98px) {
+      .mainpage {
+        margin-left: 16%;
+      }
+    }
+
+    .sidebar .active {
+      border-radius: 5px;
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    }
+
+    .sidebar-sticky {
+      position: relative;
+      top: 0;
+      height: calc(100vh - 48px);
+      padding-top: 0.5rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /* Scrollable contents if viewport is shorter than content. */
+    }
+
+    #logo {
+      object-fit: scale-down;
+    }
+
+    a:hover {
+      background-color: blue;
+    }
+
+    .theme :hover {
+      background-color: white;
+    }
+
+
+    html {
+      transition: color 300ms, background-color 300ms;
+    }
+
+    html[data-theme='dark'] {
+      background: #828080;
+      color: white;
+      filter: invert(1) hue-rotate(180deg)
+    }
+
+    html[data-theme='dark'] #title {
+      filter: invert(1) hue-rotate(180deg);
+      z-index: 1;
+    }
+
+    html[data-theme='dark'] #quick1 {
+      filter: invert(1) hue-rotate(180deg);
+      z-index: 1;
+    }
+
+    html[data-theme='dark'] img {
+      filter: invert(1) hue-rotate(180deg);
+      z-index: 1;
+    }
+
+    html[data-theme='dark'] #button-toggle {
+      filter: invert(0) hue-rotate(180deg);
+      z-index: -1;
+    }
+
+    #sidenav:hover {
+      color: white;
+      background-color: rgb(100, 109, 226);
+    }
+
+    #box-images {
+      transition: transform .2s;
+    }
+
+    #box-images:hover {
+      -ms-transform: scale(1.5);
+      /* IE 9 */
+      -webkit-transform: scale(1.5);
+      /* Safari 3-8 */
+      transform: scale(1.5);
+      z-index: 1;
+      width: 80%;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    const productpage = document.getElementsByTagName('html')[0];
+    const toggleTheme = (theme) => {
+      productpage.dataset.theme = theme;
+    }
+  </script>
+
+  <header>
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" style="z-index: 0;">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3"><br><br>
+          <p class="list-group-item list-group-item-action ripple">
+            <img width="60%" style="margin: -99% 0% 0% 15%;" id="logo"  src="https://media.licdn.com/dms/image/C4D0BAQFVBPbc6-yxoA/company-logo_200_200/0/1677167040157?e=2147483647&v=beta&t=GlZL2PZg5L1x5tzCMMMIHseNt2V_SWxmGKLh8DbtlbU">
+          </p>
+          <a href="#home" id="sidenav" class="list-group-item list-group-item-action ripple" aria-current="true">
+            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+          </a>
+          <a href="#about" id="sidenav" class="list-group-item list-group-item-action ripple">
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>About Us</span>
+          </a>
+          <a href="#features" id="sidenav" class="list-group-item list-group-item-action ripple"><i
+              class="fas fa-lock fa-fw me-3"></i><span>Specialites</span></a>
+          <a href="#quick1" id="sidenav" class="list-group-item list-group-item-action ripple">
+            <i class="fas fa-chart-pie fa-fw me-3"></i><span>Contact Us</span>
+          </a>
+          <p class="list-group-item list-group-item-action ripple fixed-bottom" style="width:15%"><i
+              class="fas fa-lock fa-fw me-3"></i><i class="fas fa-lock fa-fw me-3"></i>Theme &nbsp; <button width="40px"
+              style="border-radius: 100px;width: 30px;height: 30px;" id="button-toggle" class="btn btn-dark"
+              onclick="toggleTheme('dark');" ondblclick="toggleTheme('light');"></button></p>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <b id="home"> </b><br>
+  <div class="mainpage">
+
+    <div>
+      <div class="container">
+        <div class="row align-items-start"><br><br>
+          <img src="https://www.wallpapertip.com/wmimgs/66-660018_background-wallpaper-blue-colour.jpg"   class="img-fluid" style="height:80vh;">
+          <div id="title">
+            <h1 style="width:30%;font-size: 53px ;margin-top: -35%; margin-right: 10%;color:rgb(224, 245, 254);font-family: 'Lobster';"      class="ms-auto">The Perfume Hub</h1>
+            <br>
+            <h5><span class="ms-auto text-white" style="width:50%;font-style: italic; float:right; margin-right: 3%;">
+                Find a signature scent you love. A new perfume for every moment. The new fresh sensation.
+                The scent that’s a rose to your senses. A perfect perfume for every mood. </span></h5>
+          </div>
+        </div>
+      </div>
+      <br>
+      <b id="about"></b>
+      <br> <hr><br>
+ 
+      <h1 style="font-family: 'Lobster';" align="center">About Us</h1><br>
+      <div class="container bg-white" style="width:80%">
+        <div class="row align-items-start ">
+          <div class="col-sm-6" align="center">
+            <br>
+            <img style="width:80% ; height: 375px;" class="img-fluid"  src="https://img.freepik.com/premium-photo/perfume-with-floral-aroma-burst-generative-ai_74760-5006.jpg?size=626&ext=jpg&ga=GA1.2.1023083493.1682422864&semt=sph">
+
+          </div>
+          <div class="col-sm-6" style="padding: 10px;"><br><br>
+            The Perfume Hub discovers a new signature scent that is fresh and sweet and finest in fragnance
+            oils.<br><br>
+            The Specialites of The Perfume Hub have :<br><br>
+            <ul>
+              <li>Strong-smelling organic compounds that have characteristic, pleasant odors. </li>
+              <li>Giving a pleasant and desirable scent to a person's body.</li>
+              <li>Aim at increasing self-appeal
+              <li>and self-confidence.</li>
+              <li>Enhancing health and well-being by improving mood, reducing anxiety and stress.</li>
+              <li>Increasing cognitive function, and improving sleep.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <hr><br>
+
+      <div class="features bg-white" id="features">
+
+        <div class="container">
+          <h1 style="font-family: 'Lobster';" align="center">Our Specialites</h1><br>
+          <div class="row align-items-start">
+
+            <div class="col-sm-4 card">
+              <img style="height:350px" id="box-images"
+                src="https://img.freepik.com/free-photo/fresh-scent-purple-flower-glass-bottle-generative-ai_188544-9642.jpg?size=626&ext=jpg&ga=GA1.2.1023083493.1682422864&semt=sph">
+              <br><span style="font-family: 'Lobster'; font-size: 22px;letter-spacing: 0.2px; font-weight: 590;"
+                align="center">The new fragrance is simply divine</span>
+              <br>
+            </div>
+            <div class="col-sm-4 card">
+              <img style="height:350px" id="box-images"
+                src="https://img.freepik.com/free-photo/bottle-perfume-with-pink-flower-side_1340-38025.jpg?size=626&ext=jpg&ga=GA1.1.1023083493.1682422864&semt=sph">
+              <br><span style="font-family: 'Lobster'; font-size: 22px;letter-spacing: 0.2px; font-weight: 590;"
+                align="center">A scent that keeps on smelling</span>
+              <br>
+            </div>
+            <div class="col-sm-4 card">
+              <img style="height:350px" id="box-images"
+                src="https://img.freepik.com/premium-photo/elegant-parfume-bottle-decorated-with-flowers_761391-104.jpg?size=626&ext=jpg&ga=GA1.1.1023083493.1682422864&semt=sph">
+              <br><span style="font-family: 'Lobster'; font-size: 22px;letter-spacing: 0.2px; font-weight: 590;"
+                align="center">The perfect smell for you</span>
+              <br>
+            </div>
+          </div>
+          <br>
+          <div class="row align-items-start">
+
+            <div class="col-sm-4 card">
+              <img style="height:300px" id="box-images"
+                src="https://img.freepik.com/free-photo/front-view-rectangle-perfume-bottle-colored-flowers-dark-blue_140725-145048.jpg?w=1060&t=st=1685865870~exp=1685866470~hmac=93bbfccb5c8e552f1794460317e756112e3c95ecb6938c33df184bc54d49d270">
+              <br><span style="font-family: 'Lobster'; font-size: 22px;letter-spacing: 0.2px; font-weight: 590;"
+                align="center">Be happy, smell sweet</span>
+              <br>
+            </div>
+            <div class="col-sm-4 card">
+              <img style="height:300px" id="box-images"
+                src="https://img.freepik.com/premium-photo/cosmetic-perfume-container-banner-bring-glamour-beauty-routine-generative-ai_753390-1522.jpg?size=626&ext=jpg&ga=GA1.1.1023083493.1682422864&semt=sph">
+              <br><span style="font-family: 'Lobster'; font-size: 22px;letter-spacing: 0.2px; font-weight: 590;"
+                align="center">Everything’s better with a bit of fragrance</span>
+              <br>
+            </div>
+            <div class="col-sm-4 card">
+              <img style="height:300px" id="box-images"
+                src="https://img.freepik.com/premium-photo/multicolor-luxury-perfume-bottle-fragrance_787273-25.jpg?size=626&ext=jpg&ga=GA1.1.1023083493.1682422864&semt=sph">
+              <br><span style="font-family: 'Lobster'; font-size: 22px;letter-spacing: 0.2px; font-weight: 590;"
+                align="center">A happy perfume smells good all the time</span>
+              <br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <br>
+
+      <div class="container bg-white" style="text-align: center;">
+        <br>
+        <h1 style="font-family: 'Lobster';" align="center">Contact Us</h1><br>
+        <div class="row align-items-start">
+          <div class="col-sm-6">
+            <img  src="https://img.freepik.com/premium-vector/organic-flat-customer-support-illustration_23-2148899140.jpg?size=626&ext=jpg&ga=GA1.2.1023083493.1682422864&semt=ais" id="logo2" class="img-fluid" alt="Sample image">
+          </div>
+          <div class="col-sm-6">
+            <center>
+              <form>
+                <br><br>
+                <p> <img width="250px"   src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPHiA-W_GMzCZVdzp_NO5kaCNaR7KYH7TJ8Od-W2kJI-cw9NVu">
+                  <br><br><span>OR</span>
+                </p>
+            </center>
+            <div class="form-outline mb-4">
+              <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Email Address" />
+            </div>
+            <div class="form-outline mb-3">
+              <input type="password" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Enter password" />
+            </div>
+            <center><a href="#!">Forgot password?</a><br><br>
+              <button type="button" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Submit</button>
+              </form>
+            </center>
+          </div>
+        </div>
+      </div>
+      <b id="quick"></b><br><br>
+
+      <footer class="text-center text-lg-start bg-dark text-white" id="quick1">
+        <div class="text-center p-4">
+          The Perfume Hub © 2023 Copyright
+        </div>
+      </footer>
+
+</body>
+</html>
